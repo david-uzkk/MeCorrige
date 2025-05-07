@@ -15,3 +15,8 @@
 2. Instale as dependências:
    ```bash
    pip install -r requirements.txt
+   ```
+3. Inicie o projeto
+   ```bash
+   python .\app.py
+   ```
