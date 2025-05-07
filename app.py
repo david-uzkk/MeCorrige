@@ -3,13 +3,13 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
-# Carregar variáveis de ambiente do arquivo .env
+# carregar variaveis de ambiente do  .env
 load_dotenv()
 
-# Configurar a API OpenAI
+# configurar a api OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Inicializar a aplicação Flask
+# inicializar a aplicação flask
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,13 +18,13 @@ def index():
 
 @app.route('/aprimorar', methods=['POST'])
 def aprimorar_mensagem():
-    # Obter dados do formulário
+    # obter dados do formulario
     mensagem_original = request.form['mensagem']
     contexto = request.form.get('contexto', 'Automático')
     tom = request.form.get('tom', 'Automático')
     
     try:
-        # Criar prompt para a API da OpenAI
+        # criar prompt para a api da OpenAI
         if contexto == "Automático" and tom == "Automático":
             prompt = f"""
             Por favor, apimore a seguinte mensagem para torná-la mais profissional,
@@ -46,7 +46,7 @@ def aprimorar_mensagem():
             Corrija erros gramaticais, melhore a estrutura e o tom.
             """
         
-        # Fazer chamada para a API da OpenAI
+        # fazer chamada para a api da OpenAI
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -56,7 +56,7 @@ def aprimorar_mensagem():
             max_tokens=800
         )
         
-        # Extrair a resposta gerada
+        # extrair a resposta gerada
         mensagem_aprimorada = response.choices[0].message.content
         
         return render_template('result.html', 
