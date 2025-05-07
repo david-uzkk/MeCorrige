@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeCorrige | Aprimorador de Mensagens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-spell-check"></i>
+                <h1>MeCorrige</h1>
+            </div>
+            <p class="slogan">Mensagens profissionais em segundos</p>
+        </header>
+        
+        <main>
+            <div class="intro-card">
+                <h2><i class="fas fa-magic"></i> Transforme suas mensagens</h2>
+                <p>Precisa enviar aquela mensagem importante mas não sabe como escrever? 
+                   Deixe-nos ajudar a torná-la mais profissional e adequada.</p>
+            </div>
+            
+            <form action="/aprimorar" method="post" class="message-form">
+                <div class="form-group">
+                    <label for="mensagem">
+                        <i class="fas fa-pen"></i> Sua mensagem:
+                    </label>
+                    <textarea 
+                        id="mensagem" 
+                        name="mensagem" 
+                        rows="5" 
+                        placeholder="Digite aqui a mensagem que você deseja aprimorar..."
+                        required
+                    ></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contexto">
+                            <i class="fas fa-users"></i> Contexto (opcional):
+                        </label>
+                        <select id="contexto" name="contexto">
+                            <option value="Automático" selected>Automático (Recomendado)</option>
+                            <option value="Mensagem para chefe/superior">Mensagem para chefe/superior</option>
+                            <option value="Mensagem para médico/profissional de saúde">Mensagem para médico/profissional de saúde</option>
+                            <option value="Mensagem para cliente">Mensagem para cliente</option>
+                            <option value="E-mail profissional">E-mail profissional</option>
+                            <option value="Pedido de folga/ausência">Pedido de folga/ausência</option>
+                            <option value="Mensagem para professor">Mensagem para professor</option>
+                            <option value="Agradecimento formal">Agradecimento formal</option>
+                            <option value="Explicação/justificativa">Explicação/justificativa</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tom">
+                            <i class="fas fa-volume-up"></i> Tom (opcional):
+                        </label>
+                        <select id="tom" name="tom">
+                            <option value="Automático" selected>Automático (Recomendado)</option>
+                            <option value="Formal e respeitoso">Formal e respeitoso</option>
+                            <option value="Profissional e direto">Profissional e direto</option>
+                            <option value="Cordial e amigável">Cordial e amigável</option>
+                            <option value="Assertivo">Assertivo</option>
+                            <option value="Diplomático">Diplomático</option>
+                            <option value="Empático">Empático</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">
+                    <i class="fas fa-magic"></i> Corrigir Mensagem
+                </button>
+            </form>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Correção Gramatical</h3>
+                    <p>Elimine erros de gramática e pontuação.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Tom Adequado</h3>
+                    <p>Ajuste o tom para o contexto necessário.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Clareza</h3>
+                    <p>Mensagens diretas e sem ambiguidades.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>MeCorrige &copy; 2025 | Desenvolvido com Flask</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacidade</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

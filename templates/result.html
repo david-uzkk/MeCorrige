@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeCorrige | Sua Mensagem Aprimorada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-spell-check"></i>
+                <h1>MeCorrige</h1>
+            </div>
+            <p class="slogan">Mensagens profissionais em segundos</p>
+        </header>
+        
+        <main>
+            <div class="result-header">
+                <h2><i class="fas fa-check-circle"></i> Sua mensagem foi aprimorada!</h2>
+                {% if contexto != "Automático" or tom != "Automático" %}
+                <div class="context-info">
+                    {% if contexto != "Automático" %}<span><i class="fas fa-users"></i> Contexto: {{ contexto }}</span>{% endif %}
+                    {% if tom != "Automático" %}<span><i class="fas fa-volume-up"></i> Tom: {{ tom }}</span>{% endif %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="message-comparison">
+                <div class="card original">
+                    <h3><i class="fas fa-pen"></i> Mensagem Original</h3>
+                    <div class="message-content">
+                        {{ mensagem_original }}
+                    </div>
+                </div>
+                
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="card improved">
+                    <h3><i class="fas fa-star"></i> Mensagem Aprimorada</h3>
+                    <div class="message-content">
+                        {{ mensagem_aprimorada }}
+                    </div>
+                    <div class="copy-buttons">
+                        <button class="btn-copy" onclick="copyToClipboard('{{ mensagem_aprimorada|replace("'", "\\'") }}')">
+                            <i class="fas fa-copy"></i> Copiar
+                        </button>
+                        <a href="https://wa.me/?text={{ mensagem_aprimorada|urlencode }}" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Enviar via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/" class="btn">
+                    <i class="fas fa-redo"></i> Corrigir outra mensagem
+                </a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>MeCorrige &copy; 2025 | Desenvolvido com Flask</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> Sobre</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Privacidade</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Mensagem copiada para a área de transferência!');
+            }, function(err) {
+                alert('Erro ao copiar texto: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>
